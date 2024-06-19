@@ -16,8 +16,6 @@ test('navigate to forms page', async ({page}) => {
     await pm.navigateTo().smartTablePage()
     await pm.navigateTo().toastrPage()
     await pm.navigateTo().tooltipPage()
-    
-
 
 })
 
@@ -34,11 +32,11 @@ test('parametrized methods', async({page}) => {
     await pm.onDatepickerPage().selectDatepickerWithRangeFromToday(3,10)
 })
 
-test.only('testing with argos ci', async ({page}) => {
+test('testing with argos ci', async ({page}) => {
     const pm = new PageManager(page)
     await pm.navigateTo().formLayoutPage()
-    await argosScreenshot(page, "formLayout Page");
+    await argosScreenshot(page, "formLayout Page")
     await pm.navigateTo().datePickerPage()
-    await argosScreenshot(page, "datePicker Page");
+    await argosScreenshot(page, "datePicker Page")
  
 })
