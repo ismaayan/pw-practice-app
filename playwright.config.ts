@@ -38,7 +38,12 @@ export default defineConfig<TestOptions>({
     ['html']
   ],
     
- 
+  webServer: {
+    command: 'npm start',
+    url: 'http://localhost:4200/',
+    timeout: 120 * 1000,
+    reuseExistingServer: !process.env.CI,
+  },
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -89,9 +94,5 @@ export default defineConfig<TestOptions>({
   ],
 
   /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://127.0.0.1:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
+
 });
