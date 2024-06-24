@@ -59,13 +59,26 @@ export default defineConfig<TestOptions>({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+        ...devices['Desktop Chrome'] ,
+      },
+      
     },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    }
+    // {
+    //   name: 'firefox',
+    //   use: { 
+    //   ...devices['Desktop Firefox'],
+    //   },
+      
+  
+    // {
+    //   name:'mobile', 
+    //   // testMatch:'testMobile.spec.ts',
+    //   use: {
+    //     viewport:{width:414, height:800}
+    //   // ...devices['iPhone 14 Pro']
+    //   },   
+    // }
 
     // {
     //   name: 'webkit',
@@ -91,8 +104,10 @@ export default defineConfig<TestOptions>({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
-  ],
+  ]
+
 
   /* Run your local dev server before starting the tests */
 
 });
+

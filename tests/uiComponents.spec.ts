@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test'
+import { argosScreenshot } from "@argos-ci/playwright";
 
 test.beforeEach(async ({ page }) => {
     await page.goto('/')
@@ -7,9 +8,13 @@ test.beforeEach(async ({ page }) => {
 })
 
 test.describe('form layouts page', () => {
-    test.beforeEach(async ({ page }) => {
+    test.beforeEach(async ({ page,}, testInfo) => {
+        if(testInfo.project.name == 'mobile'){
+            await page.locator('.sidebar-toggle').click() 
+        }
         await page.getByText('Forms').click()
         await page.getByText('Form Layout').click()
+        
 
     })
 
@@ -27,14 +32,16 @@ test.describe('form layouts page', () => {
 
     })
 
-    test('radio buttons', async ({ page }) => {
+    test('radio buttons', async ({ page }, testInfo) => {
+        if(testInfo.project.name == 'mobile'){
+            await page.locator('.sidebar-toggle').click() 
+        }
         const usingTheGridEmailForm = page.locator('nb-card', { hasText: 'Using the Grid' })
         await usingTheGridEmailForm.getByLabel('Option 1').check({ force: true })
         const radioStatus = usingTheGridEmailForm.getByLabel('Option 1').isChecked()
         expect(radioStatus).toBeTruthy()
 
         await usingTheGridEmailForm.getByLabel('Option 2').check({ force: true })
-        await page.pause()
         expect(await usingTheGridEmailForm.getByLabel('Option 1').isChecked()).toBeFalsy()
         expect(await usingTheGridEmailForm.getByLabel('Option 2').isChecked()).toBeTruthy()
 
@@ -42,10 +49,16 @@ test.describe('form layouts page', () => {
 
 })
 
-test('checkboxes', async ({ page }) => {
+test('checkboxes', async ({ page }, testInfo) => {
+    if(testInfo.project.name == 'mobile'){
+        await page.locator('.sidebar-toggle').click() 
+    }
     await page.getByText('Modal & Overlays').click()
     await page.getByText('Toastr').click()
 
+    if(testInfo.project.name == 'mobile'){
+        await page.locator('.sidebar-toggle').click() 
+    }
     await page.getByRole('checkbox', { name: 'Hide on click' }).uncheck({ force: true })
     await page.getByRole('checkbox', { name: 'Prevent arising of duplicate toast' }).check({ force: true })
 
@@ -59,7 +72,11 @@ test('checkboxes', async ({ page }) => {
 
 })
 
-test('lists and dropdowns', async ({ page }) => {
+test('lists and dropdowns', async ({ page }, testInfo) => {
+    if(testInfo.project.name == 'mobile'){
+        test.skip()
+    }
+    
     const dropDownMenu = page.locator('ngx-header nb-select')
     await dropDownMenu.click()
 
@@ -87,10 +104,16 @@ test('lists and dropdowns', async ({ page }) => {
 
 })
 
-test('tooltips', async ({ page }) => {
+test('tooltips', async ({ page }, testInfo) => {
+    if(testInfo.project.name == 'mobile'){
+        await page.locator('.sidebar-toggle').click() 
+    }
     await page.getByText('Modal & Overlays').click()
     await page.getByText('tooltip').click()
-    
+
+    if(testInfo.project.name == 'mobile'){
+        await page.locator('.sidebar-toggle').click() 
+    }
     const tooltipCard = await page.locator('nb-card', { hasText: 'top' })
     await tooltipCard.getByRole('button', { name: 'Top' }).hover()
     const tooltip = await page.locator('nb-tooltip').textContent()
@@ -98,7 +121,10 @@ test('tooltips', async ({ page }) => {
 
 })
 
-test('tables & data', async ({ page }) => {
+test('tables & data', async ({ page }, testInfo) => {
+    if(testInfo.project.name == 'mobile'){
+        await page.locator('.sidebar-toggle').click() 
+    }
     await page.getByText('Tables & Data').click()
     await page.getByText('Smart Table').click()
 
@@ -107,16 +133,25 @@ test('tables & data', async ({ page }) => {
         dialog.accept()
     })
 
+    if(testInfo.project.name == 'mobile'){
+        await page.locator('.sidebar-toggle').click() 
+    }
     await page.getByRole('table').locator('tr', { hasText: 'mdo@gmail.com' }).locator('.nb-trash').click()
     await expect(page.locator('table tr').first()).not.toHaveText('mdo@gmail.com')
 
 
 })
 
-test('web table', async ({ page }) => {
+test('web table', async ({ page }, testInfo) => {
+    if(testInfo.project.name == 'mobile'){
+        await page.locator('.sidebar-toggle').click() 
+    }
     await page.getByText('Tables & Data').click()
     await page.getByText('Smart Table').click()
 
+    if(testInfo.project.name == 'mobile'){
+        await page.locator('.sidebar-toggle').click() 
+    }
     //get row by any test in row
     const targetRow = page.getByRole('row', { name: 'twitter@outlook.com' })
     await targetRow.locator('.nb-edit').click()
@@ -146,6 +181,7 @@ test('web table', async ({ page }) => {
             const cellValue = await row.locator('td').last().textContent()
             if (age == "200") {
                 expect(await page.locator('table').textContent()).toContain('No data found')
+                await argosScreenshot(page, "No data found")
 
             } else {
                 expect(cellValue).toEqual(age)
@@ -157,10 +193,16 @@ test('web table', async ({ page }) => {
 
 })
 
-test('date picker', async ({ page }) => {
+test('date picker', async ({ page }, testInfo) => {
+    if(testInfo.project.name == 'mobile'){
+        await page.locator('.sidebar-toggle').click() 
+    }
     await page.getByText('Forms').click()
     await page.getByText('Datepicker').click()
 
+    if(testInfo.project.name == 'mobile'){
+        await page.locator('.sidebar-toggle').click() 
+    }
     const calendarInputField = page.getByPlaceholder('Form Picker')
     await calendarInputField.click()
 
