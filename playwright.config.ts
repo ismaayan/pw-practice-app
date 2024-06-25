@@ -35,11 +35,13 @@ export default defineConfig<TestOptions>({
    
       },
     ],
+    ['json', {outputFile: 'test results/jsonReport.json'}],
+    // ['allure-playwright'],
     ['html']
   ],
     
   webServer: {
-    command: 'npm start',
+    command: 'npm run start',
     url: 'http://localhost:4200/',
     timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI,
@@ -105,7 +107,6 @@ export default defineConfig<TestOptions>({
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
   ]
-
 
   /* Run your local dev server before starting the tests */
 
