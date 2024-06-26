@@ -1,4 +1,4 @@
-# Playwright Test Automation with TypeScript
+# Playwright Test Automation with TypeScript <img src="https://playwright.dev/img/playwright-logo.svg" width="100" height="100">
 
 ## Description
 This project is a comprehensive Playwright test automation framework developed using TypeScript. It encompasses best practices, Page Objects, and advanced features to ensure robust and efficient testing.
