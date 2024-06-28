@@ -43,3 +43,14 @@ You can [download](https://playwright.dev/docs/downloads) the latest installable
 ## Related
 
 [bonder-artem-repository](https://github.com/bondar-artem/pw-practice-app.git) - Test application
+
+## contact 💬
+
+<div align="center">
+
+<h2>
+    Contact with me<img src="https://github.com/ricardo1470/ricardo1470/blob/master/img/Handshake.gif" height="32px">
+</h2>
+
+| [<img src="https://github.com/ricardo1470/ricardo1470/blob/master/img/GitHub.png" alt="Github logo" width="34">](https://github.com/ismaayan/MaayanI) | [<img src="https://github.com/ricardo1470/ricardo1470/blob/master/img/email.png" alt="email logo" height="32">](mailto:maayan.isr89@gmail.com) | [<img src="https://github.com/ricardo1470/ricardo1470/blob/master/img/linkedin-icon.png" alt="Linkedin Logo" width="32">](https://www.linkedin.com/in/maayan-israel/) | 
+|:---:|:---:|:---:|
