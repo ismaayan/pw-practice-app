@@ -28,8 +28,8 @@ test('parametrized methods', async({page}) => {
     await pm.onFormLayoutPage().submitUSingTheGridFormWithCardenialsAndSelectOption('test@test.com', '1020304050', 'Option 1')
     await pm.onFormLayoutPage().submitInlineFormWithNameEmailAndCheckbox(randomFullName, randomEmail, true)
     await pm.navigateTo().datePickerPage()
-    await pm.onDatepickerPage().selectCommonDatepickerDateFromToday(1)
-    await pm.onDatepickerPage().selectDatepickerWithRangeFromToday(1,1)
+    await pm.onDatepickerPage().selectCommonDatepickerDateFromToday(4)
+    await pm.onDatepickerPage().selectDatepickerWithRangeFromToday(5,10)
 })
 
 test('testing with argos ci', async ({page}) => {

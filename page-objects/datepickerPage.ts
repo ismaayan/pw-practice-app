@@ -46,7 +46,13 @@ export class DatepickerPage {
             calendarMonthAndYear = await this.page.locator('nb-calendar-view-mode').textContent()
 
         }
-        await this.page.locator('.day-cell.ng-star-inserted').getByText(expectedDate, { exact: true }).click()
+        const dayCell = this.page.locator('[class="day-cell ng-star-inserted"]')
+        const rangeCell = this.page.locator('[class="range-cell day-cell ng-star-inserted"]')
+        if(await dayCell.first().isVisible()){
+            await dayCell.getByText(expectedDate, {exact: true}).click()
+        } else {
+            await rangeCell.getByText(expectedDate, {exact: true}).click()
+        }
         return dateToAssert
 
     }

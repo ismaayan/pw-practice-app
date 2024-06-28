@@ -207,7 +207,7 @@ test('date picker', async ({ page }, testInfo) => {
     await calendarInputField.click()
 
     const date = new Date()
-    date.setDate(date.getDate() + 40)
+    date.setDate(date.getDate() + 1)
     const expectedDate = date.getDate().toString()
     const expectedMonthShort = date.toLocaleString('En-US', { month: 'short' })
     const expectedMonthLong = date.toLocaleString('En-US', { month: 'long' })
