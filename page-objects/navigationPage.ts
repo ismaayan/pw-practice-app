@@ -8,6 +8,7 @@ export class NavigationPage{
     readonly smartTableManuItem: Locator
     readonly toastrManuItem: Locator
     readonly tooltipManuItem: Locator
+    readonly dialogManuItem: Locator
 
 
     constructor(page: Page ){
@@ -17,6 +18,7 @@ export class NavigationPage{
         this.smartTableManuItem = page.getByText('Smart Table')
         this.toastrManuItem = page.getByText('Toastr')
         this.tooltipManuItem = page.getByText('tooltip')
+        this.dialogManuItem = page.getByText('Dialog')
     }
 
     async formLayoutPage(){
@@ -46,6 +48,10 @@ export class NavigationPage{
         await this.selectGroupManuItem('Modal & Overlays')
         await this.tooltipManuItem.click()
 
+    }
+    async dialogPage(){
+        await this.selectGroupManuItem('Modal & Overlays')
+        await this.dialogManuItem.click()
 
 
     }
