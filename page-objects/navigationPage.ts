@@ -9,6 +9,8 @@ export class NavigationPage{
     readonly toastrManuItem: Locator
     readonly tooltipManuItem: Locator
     readonly dialogManuItem: Locator
+    readonly registerManuItem: Locator
+    readonly loginManuItem: Locator
 
 
     constructor(page: Page ){
@@ -19,6 +21,8 @@ export class NavigationPage{
         this.toastrManuItem = page.getByText('Toastr')
         this.tooltipManuItem = page.getByText('tooltip')
         this.dialogManuItem = page.getByText('Dialog')
+        this.registerManuItem = page.getByText('Register')
+        this.loginManuItem = page.getByText('Login')
     }
 
     async formLayoutPage(){
@@ -54,6 +58,14 @@ export class NavigationPage{
         await this.dialogManuItem.click()
 
 
+    }
+    async registerPage(){
+        await this.selectGroupManuItem('Auth')
+        await this.registerManuItem.click()
+    }
+    async loginPage(){
+        await this.selectGroupManuItem('Auth')
+        await this.loginManuItem.click()
     }
 
   
